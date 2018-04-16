@@ -43,8 +43,10 @@
         NSDictionary *latLng;
         for (int i = 0; i < data.count; i++) {
             latLng = [data objectAtIndex:i];
+            double lat = [[latLng objectForKey:@"lat"] doubleValue];
+            double lng = [[latLng objectForKey:@"lng"] doubleValue];
             GMUWeightedLatLng *item =
-            [[GMUWeightedLatLng alloc] initWithCoordinate:CLLocationCoordinate2DMake([[latLng objectForKey:@"lat"] floatValue], [[latLng objectForKey:@"lng"] floatValue])
+            [[GMUWeightedLatLng alloc] initWithCoordinate:CLLocationCoordinate2DMake(lat, lng)
                                                 intensity:1.0];
             items[i] = item;
         }
