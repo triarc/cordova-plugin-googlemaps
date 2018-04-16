@@ -43,6 +43,9 @@
     <js-module name="GroundOverlay" src="www/GroundOverlay.js">
       <runs />
     </js-module>
+    <js-module name="HeatmapLayer" src="www/HeatmapLayer.js">
+      <runs />
+    </js-module>
     <js-module name="Common" src="www/Common.js">
       <runs />
     </js-module>
@@ -323,6 +326,9 @@ The native map view is faster, use less network usage, display 3D views, and eve
             </feature>
             <feature name="GroundOverlay">
                 <param name="ios-package" value="PluginGroundOverlay" />
+            </feature>
+            <feature name="HeatmapLayer">
+                <param name="ios-package" value="PluginHeatmapLayer" />
             </feature>
             <feature name="KmlOverlay">
                 <param name="ios-package" value="PluginKmlOverlay" />

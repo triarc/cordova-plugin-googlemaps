@@ -946,6 +946,28 @@ Map.prototype.addKmlOverlay = function(kmlOverlayOptions, callback) {
 };
 
 
+//-------------
+// Heatmap overlay
+//-------------
+Map.prototype.addHeatmapLayer = function(data, callback) {
+  var self = this;
+  data = common.convertToPositionArray(data);
+
+  exec.call(this, function(result) {
+    var heatmap = new HeaptmapLayer(self, result.id, data, exec);
+    self.OVERLAYS[result.id] = heatmap;
+    heatmap.one(result.id + "_remove", function() {
+      heatmap.off();
+      delete self.OVERLAYS[result.id];
+      heatmap = undefined;
+    });
+    if (typeof callback === "function") {
+      callback.call(self, heatmap);
+    }
+  }, self.errorHandler, self.id, 'loadPlugin', ['HeatmapLayer', data]);
+
+};
+
 
 //-------------
 // Ground overlay
