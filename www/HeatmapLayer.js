@@ -34,21 +34,10 @@ var HeatmapLayer = function(map, overlayId, data, _exec) {
       exec.call(self, null, self.errorHandler, self.getPluginName(), 'setData', [self.getId(), data]);
   });
 
-  self.on("map_changed", function() {
-      var map = self.get("map");
-      exec.call(self, null, self.errorHandler, self.getPluginName(), 'setMap', [self.getId(), map]);
-  });
-
   self.on("radius_changed", function() {
       var radius = self.get("radius");
       exec.call(self, null, self.errorHandler, self.getPluginName(), 'setRadius', [self.getId(), radius]);
   });
-
-  self.on("gradient_changed", function() {
-      var gradient = self.get("gradient");
-      exec.call(self, null, self.errorHandler, self.getPluginName(), 'setGradient', [self.getId(), gradient]);
-  });
-
 }
 
 utils.extend(HeatmapLayer, BaseClass);
@@ -73,12 +62,16 @@ HeatmapLayer.prototype.setData = function(data) {
     this.set('data', data);
 };
 
+HeatmapLayer.prototype.getData = function() {
+    return this.data;
+};
+
 HeatmapLayer.prototype.setRadius = function(radius) {
     this.set('radius', radius);
 };
 
-HeatmapLayer.prototype.setGradient = function(gradient) {
-    this.set('gradient', gradient);
+HeatmapLayer.prototype.getRadius = function() {
+    return this.radius;
 };
 
 HeatmapLayer.prototype.setVisible = function(visible) {

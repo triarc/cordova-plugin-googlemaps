@@ -15,6 +15,7 @@ var argscheck = require('cordova/argscheck'),
   Polygon = require('./Polygon'),
   TileOverlay = require('./TileOverlay'),
   GroundOverlay = require('./GroundOverlay'),
+  HeatmapLayer = require('./HeatmapLayer'),
   KmlOverlay = require('./KmlOverlay'),
   KmlLoader = require('./KmlLoader'),
   CameraPosition = require('./CameraPosition'),
@@ -954,7 +955,7 @@ Map.prototype.addHeatmapLayer = function(data, callback) {
   data = common.convertToPositionArray(data);
 
   exec.call(this, function(result) {
-    var heatmap = new HeaptmapLayer(self, result.id, data, exec);
+    var heatmap = new HeatmapLayer(self, result.id, data, exec);
     self.OVERLAYS[result.id] = heatmap;
     heatmap.one(result.id + "_remove", function() {
       heatmap.off();
@@ -964,7 +965,7 @@ Map.prototype.addHeatmapLayer = function(data, callback) {
     if (typeof callback === "function") {
       callback.call(self, heatmap);
     }
-  }, self.errorHandler, self.id, 'loadPlugin', ['HeatmapLayer', data]);
+  }, self.errorHandler, self.id, 'loadPlugin', ['HeatmapLayer', { data: data }]);
 
 };
 
