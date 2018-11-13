@@ -1,6 +1,6 @@
 {
   "name": "triarc-cordova-plugin-googlemaps",
-  "version": "2.2.9",
+  "version": "2.2.10",
   "description": "Google Maps native SDK for Android and iOS",
   "cordova": {
     "id": "triarc-cordova-plugin-googlemaps",
